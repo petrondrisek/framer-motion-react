@@ -1,0 +1,99 @@
+.card {
+  position: relative;
+  width: var(--width);
+  height: var(--height);
+  border-radius: var(--radius);
+  overflow: hidden;
+  transition: transform var(--hover-duration) cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.card[data-clickable="true"] {
+  cursor: pointer;
+}
+
+.card[data-hovered="true"] {
+  transform: scale(var(--hover-scale)) 
+             rotate(var(--hover-rotate)) 
+             translate(var(--hover-translate-x), var(--hover-translate-y));
+}
+
+/* Glow efekt - zobrazuje se jen v radius areas kde je myš */
+.glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: var(--glow-intensity);
+  transition: opacity var(--hover-duration) ease;
+}
+
+.glow::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle var(--glow-size) at var(--glow-x) var(--glow-y),
+    var(--glow-color),
+    transparent 70%
+  );
+  filter: blur(var(--glow-blur));
+  mix-blend-mode: screen;
+}
+
+/* Border s glow efektem pouze v místě myši */
+.border {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius);
+  pointer-events: none;
+  z-index: 2;
+  padding: var(--border-width);
+  background: 
+    radial-gradient(
+      circle var(--glow-size) at var(--glow-x) var(--glow-y),
+      var(--border-glow-color),
+      var(--border-color) 20%,
+      var(--border-color)
+    );
+  -webkit-mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask: 
+    linear-gradient(#fff 0 0) content-box, 
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  opacity: var(--border-glow-intensity);
+}
+
+/* Hlavní obsah */
+.content {
+  position: relative;
+  z-index: 3;
+  height: 100%;
+  background: var(--bg);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.spotlight {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    circle var(--spotlight-size) at var(--glow-x) var(--glow-y),
+    var(--spotlight-color),
+    transparent
+  );
+  opacity: var(--glow-intensity);
+  transition: opacity var(--hover-duration) ease;
+}
+
+.contentInner {
+  position: relative;
+  height: 100%;
+  padding: var(--padding);
+  color: var(--color);
+  font-size: var(--font-size);
+  font-weight: var(--font-weight);
+}
