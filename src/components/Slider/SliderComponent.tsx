@@ -1,5 +1,5 @@
 'use client';
-import { AnimatePresence, motion, useScroll, useSpring, useTransform } from "motion/react";
+import { AnimatePresence, motion, useScroll, useTransform } from "motion/react";
 import SliderButton from "./SliderButton";
 import { Product } from "../../types/SliderProduct";
 import styles from "@/components/Slider/slider.module.css";

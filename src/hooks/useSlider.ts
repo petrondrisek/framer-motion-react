@@ -1,6 +1,7 @@
+import { Product } from "@/types/SliderProduct";
 import { useCallback, useRef, useState } from "react";
 
-export function useSlider(items: any[]) {
+export function useSlider(items: Product[]) {
     const [activeIndex, setActiveIndex] = useState<number>(0);
     const [isAnimating, setIsAnimating] = useState<boolean>(false);
     const reachedEnd = useRef<boolean>(false);
@@ -17,7 +18,7 @@ export function useSlider(items: any[]) {
 
         setIsAnimating(true);
         setActiveIndex((prev) => (prev + 1) % items.length);
-    }, [isAnimating, items.length]);
+    }, [isAnimating, items.length, activeIndex]);
 
     const prevSlide = useCallback(() => {
         if (isAnimating || items.length <= 1) return;
@@ -28,7 +29,7 @@ export function useSlider(items: any[]) {
         
         setIsAnimating(true);
         setActiveIndex((prev) => (prev - 1 + items.length) % items.length);
-    }, [isAnimating, items.length]);
+    }, [isAnimating, items.length, activeIndex]);
 
     return { activeIndex, prevIndex, isAnimating, setIsAnimating, nextSlide, prevSlide, reachedEnd, reachedStart };
 }

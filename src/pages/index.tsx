@@ -2,18 +2,19 @@
 
 import AboutComponent from "@/components/About/AboutComponent";
 import GalleryExample from "@/components/Gallery/GalleryExample";
-import { GlowCard } from "@/components/GlowCard/GlowCard";
 import GlowCardExample from "@/components/GlowCard/GlowCardExample";
 import ReviewsComponent from "@/components/Reviews/ReviewsComponent";
 import SliderComponent from "@/components/Slider/SliderComponent";
+import { Review } from "@/types/Review";
+import { Product } from "@/types/SliderProduct";
 
-const products = [
+const products: Product[] = [
   { id: 1, name: "Product 1", image: "/assets/images/mug.png", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae." },
   { id: 2, name: "Product 2", image: "/assets/images/ipod.png", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae." },
   { id: 3, name: "Product 3", image: "/assets/images/marketing.png", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae." },
 ];
 
-const reviews = [
+const reviews: Review[] = [
     { id: 1, name: "Review 1", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae." },
     { id: 2, name: "Review 2", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae." },
     { id: 3, name: "Review 3", description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quae." },

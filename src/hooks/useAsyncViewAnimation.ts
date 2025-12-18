@@ -29,7 +29,7 @@ interface AsyncViewAnimationOptions {
 export default function useAsyncViewAnimation(
   isInView: boolean,
   controls: AnimationControl[],
-  steps: (() => Promise<any>)[],
+  steps: (() => Promise<void>)[],
   options: AsyncViewAnimationOptions = {}
 ) {
   const { initialVariant = "initial", hideAsync = false, hideSequential = true } = options;
